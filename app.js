@@ -3,17 +3,16 @@ let userScore = {
     mark: 0,
     jake: 0,
     brooklyn: 0,
-    porter: 0
+    porter: 0,
+    wizbang: 100
 }
 
-function setName(name) {
-    debugger
-    document.getElementById('name').innerText = "Hello My Name Is " + name
+function setName(name, other) {
+    document.getElementById('name').innerText = 'Hello, I have a name it\'s ' + name
     drawScore(name)
 }
 
 function drawScore(name) {
-    debugger
     let template = `
     <h3>My Score is: ${userScore[name]}</h3>
     <button class="btn btn-info" onclick="addScore('${name}')">Add Score</button>
@@ -22,10 +21,7 @@ function drawScore(name) {
     document.getElementById('score').innerHTML = template
 }
 
-// drawScore()
-
 function addScore(name) {
-    debugger
     userScore[name]++
     drawScore(name)
 }
@@ -35,10 +31,13 @@ function decreaseScore(name) {
     drawScore(name)
 }
 
-
-
-
-
+function resetScores() {
+    for (let key in userScore) {
+        userScore[key] = 0
+    }
+    document.getElementById('score').innerHTML = ''
+    document.getElementById('name').innerHTML = 'Hello, I have a name it\'s _______'
+}
 
 
 
